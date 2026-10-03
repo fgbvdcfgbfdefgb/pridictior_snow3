@@ -1,0 +1,12 @@
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.ruff_cache/
+.env
+*.key
+artifacts/checkpoints/*.pt
+artifacts/predictions/*.parquet
+data/btcusdt_1s/
+!data/sample/
+.DS_Store

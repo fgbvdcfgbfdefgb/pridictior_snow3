@@ -1,0 +1,25 @@
+data:
+  path: data/btcusdt_1s
+  symbol: BTCUSDT
+  frequency_seconds: 1
+  timezone: UTC
+simulator:
+  speed: 0.0          # 0 = maximum speed; 1 = wall-clock playback
+  window_seconds: 300
+model:
+  horizon_seconds: 1800
+  sequence_length: 120
+  hidden_size: 96
+  num_layers: 2
+  dropout: 0.15
+  prediction_ema_alpha: 0.15
+  max_abs_return: 0.08
+training:
+  epoch_seconds: 1800
+  learning_rate: 0.0003
+  weight_decay: 0.0001
+  smoothness_weight: 0.10
+  batch_size: 256
+  checkpoint_dir: artifacts/checkpoints
+  prediction_dir: artifacts/predictions
+  seed: 42
