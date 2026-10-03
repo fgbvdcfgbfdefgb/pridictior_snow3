@@ -9,7 +9,7 @@ exclude = [".git/**", "data/btcusdt_1s/**", "artifacts/**", "tests/**"]
 compute = "TURING_T4"
 gpu_count = 1
 cpu = 8
-memory = 10.0
+memory = 8.0
 provider = "aws"
 region = "us-east-1"
 

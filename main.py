@@ -1,4 +1,11 @@
 """Cerebrium train-module entrypoint. Long training is invoked explicitly via run_training."""
+import sys
+from pathlib import Path
+
+# Cerebrium packages the repository root; make the src-layout package importable
+# without requiring a network-time editable installation.
+sys.path.insert(0, str(Path(__file__).resolve().parent / "src"))
+
 from bitcoin_predictor.train import run
 
 

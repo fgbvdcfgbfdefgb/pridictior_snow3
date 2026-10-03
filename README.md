@@ -38,10 +38,14 @@ The downloader uses Binance public monthly aggregate-trade archives and emits on
 
 ## Cerebrium
 
-The committed `cerebrium.toml` requests 1×T4, 8 vCPU, 10 GB RAM, one replica. It deploys `main.py` as the train module.
+The committed `cerebrium.toml` requests 1×T4, 8 vCPU, 8 GB RAM, one replica. It deploys `main.py` as the train module.
 
 ```bash
 export CEREBRIUM_API_KEY='your-key'  # never commit it
+export CEREBRIUM_PROJECT_ID='p-xxxxxxxx'
+# One-off train-module GPU smoke test (4,000 ticks by default)
+./scripts/test_cerebrium_train.sh
+# Persistent endpoint deployment
 ./scripts/run_cerebrium.sh
 ```
 
