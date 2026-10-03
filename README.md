@@ -38,7 +38,7 @@ The downloader uses Binance public monthly aggregate-trade archives and emits on
 
 ## Cerebrium
 
-The committed `cerebrium.toml` requests 1×T4, 8 vCPU, 8 GB RAM, one replica. It deploys `main.py` as the train module.
+The committed `cerebrium.toml` requests 1×T4, 8 vCPU, 8 GB RAM, one replica, using `debian:bookworm-slim`. Python packages are installed by `main.py` at runtime rather than declared in TOML. The train module is `main.py::train`.
 
 ```bash
 export CEREBRIUM_API_KEY='your-key'  # never commit it
@@ -49,7 +49,13 @@ export CEREBRIUM_PROJECT_ID='p-xxxxxxxx'
 ./scripts/run_cerebrium.sh
 ```
 
-Upload full data to `/persistent-storage/data/btcusdt_1s` and invoke `run_training` with that path. Checkpoints go to `/persistent-storage/artifacts`. `min_replicas=0` avoids idle GPU cost. Current Cerebrium configuration uses `compute = "TURING_T4"` and `gpu_count = 1`.
+Upload full data to `/persistent-storage/data/btcusdt_1s` and invoke `train` with that path. Checkpoints go to `/persistent-storage/artifacts`. `min_replicas=0` avoids idle GPU cost. Current Cerebrium configuration uses `compute = "TURING_T4"` and `gpu_count = 1`.
+
+Direct smoke-test command:
+
+```bash
+cerebrium run main.py::train
+```
 
 ## Snowflake offline operation
 
