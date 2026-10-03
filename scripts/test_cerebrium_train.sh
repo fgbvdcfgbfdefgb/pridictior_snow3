@@ -6,4 +6,4 @@ MAX_TICKS="${MAX_TICKS:-4000}"
 python -m pip install 'cerebrium>=2.9,<3'
 cerebrium project set "$CEREBRIUM_PROJECT_ID"
 cerebrium --service-account-token "$CEREBRIUM_API_KEY" run main.py::run_training \
-  --data "{\"max_ticks\":${MAX_TICKS}}"
+  --max_ticks "$MAX_TICKS"

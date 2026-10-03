@@ -10,7 +10,11 @@ from bitcoin_predictor.train import run
 
 
 def run_training(data_path: str = "data/sample/btcusdt_1s_sample.csv", max_ticks: int | None = None) -> dict:
-    return run(data_path=data_path, output="/persistent-storage/artifacts", max_ticks=max_ticks)
+    source = Path(data_path)
+    if not source.is_absolute():
+        source = Path(__file__).resolve().parent / source
+    tick_limit = int(max_ticks) if max_ticks is not None else None
+    return run(data_path=str(source), output="/persistent-storage/artifacts", max_ticks=tick_limit)
 
 
 def health() -> dict:
